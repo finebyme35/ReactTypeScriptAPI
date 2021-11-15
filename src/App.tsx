@@ -1,25 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { Routes, Route } from "react-router";
+import Home from "./components/Home";
+import Toolbar from "./components/Toolbar";
+import User from "./components/User";
+
+
 
 function App() {
+    const [id, setId] = useState('')
+    const [email, setEmail] = useState('')
+    const [username, setUsername] = useState('')
+    const [name, setName] = useState('')
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+        <Toolbar />
+        <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/users' element={<User id={id} email={email} username={username} name={name}/>} />
+        </Routes>
+    </>
   );
 }
 
